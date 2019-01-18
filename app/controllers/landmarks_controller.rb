@@ -28,9 +28,6 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find_by_id(params[:id])
     @landmark.name = params["landmark"]["name"]
     @landmark.year_completed = params["landmark"]["year_completed"]
-    @landmark.titles << Title.create(:name => params[:title][:name])  if !params[:title][:name].empty?
-    @landmark.figure << Figure.create(:name => params[:figure][:name])  if !params[:figure][:name].empty?
-      binding.pry
     @landmark.save
     redirect to "/landmarks/#{@landmark.id}"
   end
